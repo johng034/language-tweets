@@ -1,4 +1,7 @@
 # Most Common Words
+
+**NOTE:** This project is still *in progress*. I have removed my api keys for security purposes.
+
 One of my hobbies is language learning. I have found that one of the most effective ways to increase your vocabulary in a new language is to study the top *x* words in the target language.
 
 For example, you may start with the top *100* words, then *300* words, then *500* words, and so on.
