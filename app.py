@@ -1,4 +1,3 @@
-from turtle import width
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -11,7 +10,7 @@ st.markdown("""
             Use the dropdown menu and the slider to find the common words in a language. 
             The data was collected from Twitter using the Tweepy library with Python.
 
-            If you're interested to learn more about this project, here is the [link to the Github repository](https://github.com/johng034/language-tweets).
+            If you're interested in this project, check out the [Github repository](https://github.com/johng034/language-tweets).
             """)
 
 df = pd.read_csv('./data/cleaned_data.csv')
@@ -31,7 +30,7 @@ language_df.set_index(np.arange(1,language_df.shape[0]+1), inplace=True)
 # Add a download button to save the data as a csv/xlsx file
 
 # Show word cloud
-with st.expander('See WordCloud'):
+with st.expander("See Word Cloud"):
     image = Image.open(f'./wordclouds/{language}_wordcloud.png')
     st.image(image, caption=f'{language} Word Cloud')
 
