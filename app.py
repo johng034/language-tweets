@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
+from io import BytesIO
+import requests
 
 st.set_page_config(page_title='Common Words')
 
@@ -14,6 +16,11 @@ st.markdown("""
             """)
 
 df = pd.read_csv('./data/cleaned_data.csv')
+
+wordcloud_urls = {
+    'French': 'https://github.com/johng034/language-tweets/blob/master/wordclouds/French_wordcloud.png?raw=true',
+    'German': 'https://github.com/johng034/language-tweets/blob/master/wordclouds/german_wordcloud.png?raw=true'
+}
 
 # Dropdown menu to choose language
 language = st.selectbox('Select a language', options=df.columns)
@@ -31,7 +38,9 @@ language_df.set_index(np.arange(1,language_df.shape[0]+1), inplace=True)
 
 # Show word cloud
 with st.expander("See Word Cloud"):
-    image = Image.open(f'./wordclouds/{language}_wordcloud.png')
+    response = requests.get(wordcloud_urls[language])
+    image = Image.open(BytesIO(response.content))
+    # image = Image.open(f'./wordclouds/{language}_wordcloud.png')
     st.image(image, caption=f'{language} Word Cloud')
 
 # Print table
