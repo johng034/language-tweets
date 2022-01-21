@@ -44,4 +44,9 @@ with st.expander("See Word Cloud"):
 # Print table
 st.header(f'Top {num_of_words} Most Common {language} Words')
 data = language_df['word'][:num_of_words]
+
+## TODO
+# Add a column of the English translation for each word
+# Might be easier and quicker to do in an iPython notebook instead of live translation
+
 st.table(data)
